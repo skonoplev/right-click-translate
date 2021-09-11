@@ -1,7 +1,5 @@
 ## Right Click Translate
 
-[![CircleCI](https://circleci.com/gh/ericvan76/right-click-translate/tree/master.svg?style=svg)](https://circleci.com/gh/ericvan76/right-click-translate/tree/master)
-
 Right Click to translate selected text into a new Tab using Google Translate
 
 See [Extension Page](https://goo.gl/DZrEnA)
@@ -22,6 +20,6 @@ See [Extension Page](https://goo.gl/DZrEnA)
 | 2013-10-14 | First published |
 
 
-### Help us
+### Buy me a coffee!
 
-[![](https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J6L73EGZWXR4L)
+[![](https://www.paypalobjects.com/en_AU/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate?business=RBUDZ9FDP8MFY&no_recurring=0&currency_code=AUD)
