@@ -4,7 +4,7 @@ const ALL_LANGUAGES: Lang[] = [
   { code: 'am', name: 'Amharic' },
   { code: 'ar', name: 'Arabic' },
   { code: 'hy', name: 'Armenian' },
-  { code: 'az', name: 'Azeerbaijani' },
+  { code: 'az', name: 'Azerbaijani' },
   { code: 'eu', name: 'Basque' },
   { code: 'be', name: 'Belarusian' },
   { code: 'bn', name: 'Bengali' },
