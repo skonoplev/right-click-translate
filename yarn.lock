@@ -18,10 +18,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@types/chrome@^0.0.168":
-  version "0.0.168"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.168.tgz#e92df6601acc07427845a58b5bc62be4330d9b5f"
-  integrity sha512-kMA+5H9PSO7kEixgFgehp8xxzBV5qR9hyLCCt8j4/BIf5SJXXtVB6ik2uycU8PHgfFtMDgIC5/qQZplifYon2g==
+"@types/chrome@^0.0.219":
+  version "0.0.219"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.219.tgz#40b50f9f1a299c272e42ea68c9ea9b828f1d9c0e"
+  integrity sha512-3j4Baa7DKrH2kJ5NLJIntpiqu4l7W0na0nrW9Y5y38HsLCXa4ydK8Y8Vicqq8ZZk/LLHKU7aarmUeqdBQmamAA==
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
@@ -37,11 +37,6 @@
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/@types/filewriter/-/filewriter-0.0.28.tgz#c054e8af4d9dd75db4e63abc76f885168714d4b3"
   integrity sha1-wFTor02d11205jq8dviFFocU1LM=
-
-"@types/google.analytics@^0.0.42":
-  version "0.0.42"
-  resolved "https://registry.yarnpkg.com/@types/google.analytics/-/google.analytics-0.0.42.tgz#efe6ef9251a22ec8208dbb09f221a48a1863d720"
-  integrity sha512-w0ZFj3SHznQXSq99kFCuO8tkN6w4T14znjrF2alLCSDnHOXEnpzneyNwxLvekcsDBInr8b5mXmzYh03GArqEyw==
 
 "@types/har-format@*":
   version "1.2.8"
@@ -297,10 +292,10 @@ babel-plugin-minify-constant-folding@^0.5.0:
   dependencies:
     babel-helper-evaluate-path "^0.5.0"
 
-babel-plugin-minify-dead-code-elimination@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-minify-dead-code-elimination/-/babel-plugin-minify-dead-code-elimination-0.5.1.tgz#1a0c68e44be30de4976ca69ffc535e08be13683f"
-  integrity sha512-x8OJOZIrRmQBcSqxBcLbMIK8uPmTvNWPXH2bh5MDCW1latEqYiRMuUkPImKcfpo59pTUB2FT7HfcgtG8ZlR5Qg==
+babel-plugin-minify-dead-code-elimination@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/babel-plugin-minify-dead-code-elimination/-/babel-plugin-minify-dead-code-elimination-0.5.2.tgz#f386ceec77a80cc4e76022a04c21b7d68e0aa5eb"
+  integrity sha512-krq9Lwi0QIzyAlcNBXTL4usqUvevB4BzktdEsb8srcXC1AaYqRJiAQw6vdKdJSaXbz6snBvziGr6ch/aoRCfpA==
   dependencies:
     babel-helper-evaluate-path "^0.5.0"
     babel-helper-mark-eval-scopes "^0.4.3"
@@ -327,10 +322,10 @@ babel-plugin-minify-infinity@^0.4.3:
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-infinity/-/babel-plugin-minify-infinity-0.4.3.tgz#dfb876a1b08a06576384ef3f92e653ba607b39ca"
   integrity sha1-37h2obCKBldjhO8/kuZTumB7Oco=
 
-babel-plugin-minify-mangle-names@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-minify-mangle-names/-/babel-plugin-minify-mangle-names-0.5.0.tgz#bcddb507c91d2c99e138bd6b17a19c3c271e3fd3"
-  integrity sha512-3jdNv6hCAw6fsX1p2wBGPfWuK69sfOjfd3zjUXkbq8McbohWy23tpXfy5RnToYWggvqzuMOwlId1PhyHOfgnGw==
+babel-plugin-minify-mangle-names@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-minify-mangle-names/-/babel-plugin-minify-mangle-names-0.5.1.tgz#3dfba7f4e649ff37a767542ea0d1093bee3bb155"
+  integrity sha512-8KMichAOae2FHlipjNDTo2wz97MdEb2Q0jrn4NIRXzHH7SJ3c5TaNNBkeTHbk9WUsMnqpNUx949ugM9NFWewzw==
   dependencies:
     babel-helper-mark-eval-scopes "^0.4.3"
 
@@ -371,10 +366,10 @@ babel-plugin-transform-member-expression-literals@^6.9.4:
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-member-expression-literals/-/babel-plugin-transform-member-expression-literals-6.9.4.tgz#37039c9a0c3313a39495faac2ff3a6b5b9d038bf"
   integrity sha1-NwOcmgwzE6OUlfqsL/OmtbnQOL8=
 
-babel-plugin-transform-merge-sibling-variables@^6.9.4:
-  version "6.9.4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-merge-sibling-variables/-/babel-plugin-transform-merge-sibling-variables-6.9.4.tgz#85b422fc3377b449c9d1cde44087203532401dae"
-  integrity sha1-hbQi/DN3tEnJ0c3kQIcgNTJAHa4=
+babel-plugin-transform-merge-sibling-variables@^6.9.5:
+  version "6.9.5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-merge-sibling-variables/-/babel-plugin-transform-merge-sibling-variables-6.9.5.tgz#0b2faa9e027ef47d4e7502f77cd1a7f3a6dfbc7b"
+  integrity sha512-xj/KrWi6/uP+DrD844h66Qh2cZN++iugEIgH8QcIxhmZZPNP6VpOE9b4gP2FFW39xDAY43kCmYMM6U0QNKN8fw==
 
 babel-plugin-transform-minify-booleans@^6.9.4:
   version "6.9.4"
@@ -429,25 +424,25 @@ babel-polyfill@^6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-minify@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/babel-preset-minify/-/babel-preset-minify-0.5.1.tgz#25f5d0bce36ec818be80338d0e594106e21eaa9f"
-  integrity sha512-1IajDumYOAPYImkHbrKeiN5AKKP9iOmRoO2IPbIuVp0j2iuCcj0n7P260z38siKMZZ+85d3mJZdtW8IgOv+Tzg==
+babel-preset-minify@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/babel-preset-minify/-/babel-preset-minify-0.5.2.tgz#4d5be8b1c21d126ac403a3fd002d8b5fb7bb3c34"
+  integrity sha512-v4GL+kk0TfovbRIKZnC3HPbu2cAGmPAby7BsOmuPdMJfHV+4FVdsGXTH/OOGQRKYdjemBuL1+MsE6mobobhe9w==
   dependencies:
     babel-plugin-minify-builtins "^0.5.0"
     babel-plugin-minify-constant-folding "^0.5.0"
-    babel-plugin-minify-dead-code-elimination "^0.5.1"
+    babel-plugin-minify-dead-code-elimination "^0.5.2"
     babel-plugin-minify-flip-comparisons "^0.4.3"
     babel-plugin-minify-guarded-expressions "^0.4.4"
     babel-plugin-minify-infinity "^0.4.3"
-    babel-plugin-minify-mangle-names "^0.5.0"
+    babel-plugin-minify-mangle-names "^0.5.1"
     babel-plugin-minify-numeric-literals "^0.4.3"
     babel-plugin-minify-replace "^0.5.0"
     babel-plugin-minify-simplify "^0.5.1"
     babel-plugin-minify-type-constructors "^0.4.3"
     babel-plugin-transform-inline-consecutive-adds "^0.4.3"
     babel-plugin-transform-member-expression-literals "^6.9.4"
-    babel-plugin-transform-merge-sibling-variables "^6.9.4"
+    babel-plugin-transform-merge-sibling-variables "^6.9.5"
     babel-plugin-transform-minify-booleans "^6.9.4"
     babel-plugin-transform-property-literals "^6.9.4"
     babel-plugin-transform-regexp-constructors "^0.4.3"
@@ -2299,10 +2294,10 @@ tsutils@^2.29.0:
   dependencies:
     tslib "^1.8.1"
 
-typescript@^4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
-  integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==
+typescript@^4.9.5:
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
+  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 union-value@^1.0.0:
   version "1.0.1"

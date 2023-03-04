@@ -33,14 +33,25 @@ function onTransClick(info: chrome.contextMenus.OnClickData, lang: string) {
   } else {
     createNewTab(url);
   }
-  // @see: http://stackoverflow.com/a/22152353/1958200
-  ga('set', 'checkProtocolTask', () => { /* do nothing */ });
-  ga('send', {
-    hitType: 'event',
-    eventCategory: 'contextMenu',
-    eventAction: 'translate'
-  });
 }
+
+chrome.contextMenus.onClicked.addListener(
+  (info, _) => {
+    const menuItemId = info.menuItemId.toString();
+    switch (menuItemId) {
+      case '3e15632a-128e-4a49-873d-4d88a6ab9c92':
+      case '5bd7ff62-f469-4ad7-a2eb-0b5759ec57b3':
+        chrome.runtime.openOptionsPage();
+        break;
+      default:
+        if (menuItemId.startsWith('9b969d97-7fdb-46a4-b795-5c849ab2fb5d')) {
+          const lang = menuItemId.substring(36);
+          onTransClick(info, lang);
+        }
+        break;
+    }
+  }
+)
 
 chrome.storage.sync.get({
   newTab: 'false',
@@ -49,18 +60,17 @@ chrome.storage.sync.get({
   newTab = items.newTab === 'true';
   const languages = JSON.parse(items.languages) as Lang[];
   languages.forEach((lang) => {
-    // Add context menu
+
     chrome.contextMenus.create({
+      id: '9b969d97-7fdb-46a4-b795-5c849ab2fb5d:' + lang.code,
       title: languages.length === 1 ? `Translate "%s" to ${lang.name}` : `To ${lang.name}`,
       contexts: ['selection'],
-      onclick: (info) => {
-        onTransClick(info, lang.code);
-      }
     });
   });
 
   if (languages.length > 1) {
     chrome.contextMenus.create({
+      id: 'a76907ab-8574-44a1-b57c-81258e0c0a9f',
       type: 'separator',
       contexts: ['selection']
     });
@@ -68,20 +78,16 @@ chrome.storage.sync.get({
 
   if (languages.length !== 1) {
     chrome.contextMenus.create({
+      id: '3e15632a-128e-4a49-873d-4d88a6ab9c92',
       title: languages.length === 0 ? 'Translate Options...' : 'More...',
-      contexts: ['selection'],
-      onclick: () => {
-        chrome.runtime.openOptionsPage();
-      }
+      contexts: ['selection']
     });
   }
 
   chrome.contextMenus.create({
+    id: '5bd7ff62-f469-4ad7-a2eb-0b5759ec57b3',
     title: 'Translate Options...',
-    contexts: ['page'],
-    onclick: () => {
-      chrome.runtime.openOptionsPage();
-    }
+    contexts: ['page']
   });
 
 });
