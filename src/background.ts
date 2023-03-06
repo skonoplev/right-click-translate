@@ -45,7 +45,7 @@ chrome.contextMenus.onClicked.addListener(
         break;
       default:
         if (menuItemId.startsWith('9b969d97-7fdb-46a4-b795-5c849ab2fb5d')) {
-          const lang = menuItemId.substring(36);
+          const lang = menuItemId.substring(37);
           onTransClick(info, lang);
         }
         break;
@@ -53,41 +53,46 @@ chrome.contextMenus.onClicked.addListener(
   }
 )
 
-chrome.storage.sync.get({
-  newTab: 'false',
-  languages: '[]'
-}, (items) => {
-  newTab = items.newTab === 'true';
-  const languages = JSON.parse(items.languages) as Lang[];
-  languages.forEach((lang) => {
+chrome.runtime.onInstalled.addListener(() => {
+
+  chrome.storage.sync.get({
+    newTab: 'false',
+    languages: '[]'
+  }, (items) => {
+
+    newTab = items.newTab === 'true';
+    const languages = JSON.parse(items.languages) as Lang[];
+
+    languages.forEach((lang) => {
+
+      chrome.contextMenus.create({
+        id: '9b969d97-7fdb-46a4-b795-5c849ab2fb5d:' + lang.code,
+        title: languages.length === 1 ? `Translate "%s" to ${lang.name}` : `To ${lang.name}`,
+        contexts: ['selection'],
+      });
+    });
+
+    if (languages.length > 1) {
+      chrome.contextMenus.create({
+        id: 'a76907ab-8574-44a1-b57c-81258e0c0a9f',
+        type: 'separator',
+        contexts: ['selection']
+      });
+    }
+
+    if (languages.length !== 1) {
+      chrome.contextMenus.create({
+        id: '3e15632a-128e-4a49-873d-4d88a6ab9c92',
+        title: languages.length === 0 ? 'Translate Options...' : 'More...',
+        contexts: ['selection']
+      });
+    }
 
     chrome.contextMenus.create({
-      id: '9b969d97-7fdb-46a4-b795-5c849ab2fb5d:' + lang.code,
-      title: languages.length === 1 ? `Translate "%s" to ${lang.name}` : `To ${lang.name}`,
-      contexts: ['selection'],
+      id: '5bd7ff62-f469-4ad7-a2eb-0b5759ec57b3',
+      title: 'Translate Options...',
+      contexts: ['page']
     });
+
   });
-
-  if (languages.length > 1) {
-    chrome.contextMenus.create({
-      id: 'a76907ab-8574-44a1-b57c-81258e0c0a9f',
-      type: 'separator',
-      contexts: ['selection']
-    });
-  }
-
-  if (languages.length !== 1) {
-    chrome.contextMenus.create({
-      id: '3e15632a-128e-4a49-873d-4d88a6ab9c92',
-      title: languages.length === 0 ? 'Translate Options...' : 'More...',
-      contexts: ['selection']
-    });
-  }
-
-  chrome.contextMenus.create({
-    id: '5bd7ff62-f469-4ad7-a2eb-0b5759ec57b3',
-    title: 'Translate Options...',
-    contexts: ['page']
-  });
-
 });
