@@ -1,3 +1,5 @@
+import { Lang, Settings, defaultSettings, tryParseLegacy } from "./types.js";
+
 const ALL_LANGUAGES: Lang[] = [
   { code: 'af', name: 'Afrikaans' },
   { code: 'sq', name: 'Albanian' },
@@ -108,7 +110,6 @@ const ALL_LANGUAGES: Lang[] = [
 function getSelectedLanguages(): Lang[] {
   const languages: Lang[] = [];
   const langDivs = document.getElementsByClassName('lang') as HTMLCollectionOf<HTMLDivElement>;
-  // tslint:disable-next-line:prefer-for-of
   for (let i = 0; i < langDivs.length; i++) {
     const langDiv = langDivs[i] as HTMLDivElement;
     const checkBox = langDiv.getElementsByTagName('input')[0] as HTMLInputElement;
@@ -120,16 +121,6 @@ function getSelectedLanguages(): Lang[] {
   return languages;
 }
 
-function onCheckChanged() {
-  const languages = getSelectedLanguages();
-  const hint = document.getElementById('hint') as HTMLDivElement;
-  if (languages.length > 1) {
-    hint.style.display = 'block';
-  } else {
-    hint.style.display = 'none';
-  }
-}
-
 function createLanguageOption(lang: Lang, checked: boolean): HTMLDivElement {
   const langDiv = document.createElement('div') as HTMLDivElement;
   langDiv.className = 'lang';
@@ -137,7 +128,6 @@ function createLanguageOption(lang: Lang, checked: boolean): HTMLDivElement {
   checkBox.type = 'checkbox';
   checkBox.value = lang.code;
   checkBox.checked = checked;
-  checkBox.onclick = () => { onCheckChanged(); };
   langDiv.appendChild(checkBox);
   const label = document.createElement('label') as HTMLLabelElement;
   label.textContent = lang.name;
@@ -148,11 +138,12 @@ function createLanguageOption(lang: Lang, checked: boolean): HTMLDivElement {
 // Saves options to chrome.storage
 function save_options() {
   const newTabCheck = document.getElementById('new-tab') as HTMLInputElement;
-  const languages = getSelectedLanguages();
-  chrome.storage.sync.set({
-    newTab: newTabCheck.checked ? 'true' : 'false',
-    languages: JSON.stringify(languages)
-  }, () => {
+  const settings: Settings = {
+    newTab: newTabCheck.checked,
+    languages: getSelectedLanguages()
+  }
+
+  chrome.storage.sync.set(settings, () => {
     // reload extension
     chrome.runtime.reload();
     const status = document.getElementById('save-status') as HTMLSpanElement;
@@ -167,32 +158,25 @@ function save_options() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
-  chrome.storage.sync.get(
-    {
-      newTab: 'false',
-      languages: '[]'
-    },
-    (items) => {
-      // resue tab
-      const newTab = items.newTab === 'true';
-      const newTabCheck = document.getElementById('new-tab') as HTMLInputElement;
-      newTabCheck.checked = newTab;
-      // langs
-      const languages = JSON.parse(items.languages) as Lang[];
-      const langsDiv = document.getElementById('langs') as HTMLDivElement;
-      let groupDiv: HTMLDivElement | undefined;
-      for (let i = 0; i < ALL_LANGUAGES.length; i++) {
-        if (i % 16 === 0) {
-          groupDiv = document.createElement('div') as HTMLDivElement;
-          langsDiv.appendChild(groupDiv);
-        }
-        const lang = ALL_LANGUAGES[i];
-        const checked = languages.find((l) => l.code === lang.code) !== undefined;
-        const div = createLanguageOption(lang, checked);
-        groupDiv!.appendChild(div);
+  chrome.storage.sync.get(defaultSettings, (items: Settings) => {
+    const { newTab, languages } = tryParseLegacy(items);
+    // resue tab
+    const newTabCheck = document.getElementById('new-tab') as HTMLInputElement;
+    newTabCheck.checked = newTab;
+    // langs
+    const langsDiv = document.getElementById('langs') as HTMLDivElement;
+    let groupDiv: HTMLDivElement | undefined;
+    for (let i = 0; i < ALL_LANGUAGES.length; i++) {
+      if (i % 16 === 0) {
+        groupDiv = document.createElement('div') as HTMLDivElement;
+        langsDiv.appendChild(groupDiv);
       }
-      onCheckChanged();
-    });
+      const lang = ALL_LANGUAGES[i];
+      const checked = languages.find((l) => l.code === lang.code) !== undefined;
+      const div = createLanguageOption(lang, checked);
+      groupDiv!.appendChild(div);
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);

@@ -8,7 +8,7 @@
     "tsc": "tsc",
     "watch": "tsc --watch",
     "minify": "./node_modules/.bin/babel dist/js -d dist/js",
-    "build": "npm-run-all tsc minify"
+    "build": "npm-run-all tsc minify; zip -r dist.zip dist/*"
   },
   "dependencies": {},
   "devDependencies": {

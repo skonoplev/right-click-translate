@@ -28,10 +28,6 @@ div.lang>label {
   margin: 2px 5px;
 }
 
-.warning {
-  color: #f70;
-}
-
 .buttons {
   display: flex;
   flex-direction: row;
