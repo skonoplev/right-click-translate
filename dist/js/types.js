@@ -1,0 +1,1 @@
+export const defaultSettings={newTab:!1,languages:[]};export function tryParseLegacy(a){var b='string'==typeof a.newTab?'true'==a.newTab:a.newTab,c='string'==typeof a.languages?JSON.parse(a.languages):a.languages;return{newTab:b,languages:c}}
