@@ -23,7 +23,7 @@ function createNewTab(url: string) {
 }
 
 function onTransClick(info: chrome.contextMenus.OnClickData, lang: string) {
-  const url = `http://translate.google.com/#auto/${lang}/${encodeURIComponent(info.selectionText!)}`;
+  const url = `http://translate.google.com/?tl=${lang}&text=${encodeURIComponent(info.selectionText!)}`;
   if (!g_newTab && g_tabId !== undefined) {
     chrome.tabs.update(g_tabId, { active: true, url }, (tab) => {
       if (tab) {
